@@ -1,6 +1,12 @@
 # Purpose of renaming files
 Seeing the same song list over and over is incredibly boring. Well you can liven up your song list now by replacing a single word of each song name with a word of your choice!
 
+
+For example: Over the Period could be turned into Over the Toilet
+
+# Requirements
+Python 3
+
 # How to use
 Place the .py inside your Stepmania or Etterna folder and run it. 
 
