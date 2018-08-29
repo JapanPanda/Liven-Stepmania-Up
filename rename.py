@@ -30,6 +30,9 @@ def main():
 
 # Confirmation
 def confirm():
+    os.chdir(os.path.dirname(sys.argv[0]))
+    if os.path.exists("songBackup"):
+        print("\nWarning: You already changed the song names and have not restored them yet")
     choice = input("Are you absolutely sure you want to do this? (Y/N)\n\n>> ")
     choice = choice.lower()
     if choice == "y" or choice == "yes":
@@ -148,7 +151,7 @@ def changeSongs(wordList, songFolders):
         print("Changing songs in the " + folder + " folder")
         for root, dirs, files in os.walk(curPath + "/" + folder):
             for name in files:
-                if name[-3:] == ".sm":
+                if name[-3:] == ".sm" or name[-4:] == ".ssc":
                     with open(os.path.join(root, name), "r+", encoding="utf-8-sig") as curFile:
                         try:
                             title = curFile.readline()
@@ -234,6 +237,8 @@ def restoreSongs():
                         curFile.truncate(0)
                         curFile.write(lines)
 
+    os.chdir(os.path.dirname(sys.argv[0]))
+    os.remove("songBackup")
     return
 
 # Get confirmation from user
